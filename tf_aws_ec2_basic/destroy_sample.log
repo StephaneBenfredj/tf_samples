@@ -1,0 +1,83 @@
+sbenfredj@sbenfredj-a02 tf_aws_ec2_basic % terraform destroy
+aws_instance.sbe-ubuntu2004-test: Refreshing state... [id=i-0d71af3f1283ab678]
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.sbe-ubuntu2004-test will be destroyed
+  - resource "aws_instance" "sbe-ubuntu2004-test" {
+      - ami                          = "ami-06fd8a495a537da8b" -> null
+      - arn                          = "arn:aws:ec2:eu-west-1:747965802047:instance/i-0d71af3f1283ab678" -> null
+      - associate_public_ip_address  = true -> null
+      - availability_zone            = "eu-west-1b" -> null
+      - cpu_core_count               = 1 -> null
+      - cpu_threads_per_core         = 1 -> null
+      - disable_api_termination      = false -> null
+      - ebs_optimized                = false -> null
+      - get_password_data            = false -> null
+      - hibernation                  = false -> null
+      - id                           = "i-0d71af3f1283ab678" -> null
+      - instance_state               = "running" -> null
+      - instance_type                = "t2.micro" -> null
+      - ipv6_address_count           = 0 -> null
+      - ipv6_addresses               = [] -> null
+      - monitoring                   = false -> null
+      - primary_network_interface_id = "eni-0d9b7544ed030eecd" -> null
+      - private_dns                  = "ip-172-31-37-36.eu-west-1.compute.internal" -> null
+      - private_ip                   = "172.31.37.36" -> null
+      - public_dns                   = "ec2-52-214-183-105.eu-west-1.compute.amazonaws.com" -> null
+      - public_ip                    = "52.214.183.105" -> null
+      - secondary_private_ips        = [] -> null
+      - security_groups              = [
+          - "default",
+        ] -> null
+      - source_dest_check            = true -> null
+      - subnet_id                    = "subnet-4065cc1b" -> null
+      - tags                         = {
+          - "Name" = "sbe-ubuntu2004-test"
+        } -> null
+      - tenancy                      = "default" -> null
+      - volume_tags                  = {} -> null
+      - vpc_security_group_ids       = [
+          - "sg-941439ec",
+        ] -> null
+
+      - credit_specification {
+          - cpu_credits = "standard" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - volume_id             = "vol-0cf064b28eedfecbd" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp2" -> null
+        }
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+aws_instance.sbe-ubuntu2004-test: Destroying... [id=i-0d71af3f1283ab678]
+aws_instance.sbe-ubuntu2004-test: Still destroying... [id=i-0d71af3f1283ab678, 10s elapsed]
+aws_instance.sbe-ubuntu2004-test: Still destroying... [id=i-0d71af3f1283ab678, 20s elapsed]
+aws_instance.sbe-ubuntu2004-test: Still destroying... [id=i-0d71af3f1283ab678, 30s elapsed]
+aws_instance.sbe-ubuntu2004-test: Destruction complete after 30s
+
+Destroy complete! Resources: 1 destroyed.
