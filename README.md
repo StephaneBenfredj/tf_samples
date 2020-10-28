@@ -56,7 +56,8 @@ provider "aws" {
 provider "aws" {
   access_key = var.aws_access_key
   ...
-} ```
+} 
+```
 
 
 ### Managing values for module vars
