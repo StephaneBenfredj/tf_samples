@@ -6,7 +6,9 @@
 Terraform v0.13.5
 ```
 
-`OSX 10.15.7`
+```
+OSX 10.15.7
+```
 
 
 ## Terraform 0.12 and 0.13 changes
@@ -44,7 +46,8 @@ terraform {
 provider "aws" {
     access_key = "${var.access_key}"
     ...
-}```
+}
+```
 
 
 #### Variable syntax with terraform 0.13
