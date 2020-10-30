@@ -1,6 +1,6 @@
 # Notes 
 
-Looking to consolidate some tested TF useful/basic examples :)
+Looking to consolidate some tested TF useful/basic examples along with some tips gained thru learning experience :)
 
 
 ## Versions
@@ -46,6 +46,8 @@ terraform {
 
 #### Variable syntax pre-terraform 0.12 (?)
 
+(aka Interpolation syntax: https://www.terraform.io/docs/configuration-0-11/interpolation.html)
+
 ```
 provider "aws" {
     access_key = "${var.access_key}"
@@ -73,12 +75,15 @@ TBD
 
 
 #### thru cli using -var
-TBD
+
 `terraform apply -var="image_id=ami-abc123"`
 
-
 #### variable definition files (.tfvars)
-TBD
+
+variable files automatically loaded by TF:
+*terraform.tfvars*
+*terraform.tfvars.json* 
+files with names ending in *.auto.tfvars* or *.auto.tfvars.json.*
 
 #### use TF Environment variables
 TF_VAR_ + name of the declared variable
