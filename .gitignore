@@ -1,2 +1,5 @@
 terraform.tfstate*
 **/.terraform/*
+
+# reminder: terraform.tfvars file is automatically loaded if found in working dir
+*.tfvars

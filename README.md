@@ -1,5 +1,8 @@
 # Notes 
 
+Looking to consolidate some tested TF useful/basic examples :)
+
+
 ## Versions
 ```
 % terraform version
@@ -15,6 +18,7 @@ OSX 10.15.7
 
 ### Providers (0.13+)
 (from https://www.terraform.io/upgrade-guides/0-13.html) 
+
 Prior to 0.13: automatic provider installation only for providers packaged and distributed by HashiCorp. 
 Providers built by the community required manual installation by extracting their distribution packages into specific local filesystem locations.
 
@@ -40,7 +44,7 @@ terraform {
 ### Variables (0.12+)
 
 
-#### Variable syntax pre-terraform 0.12
+#### Variable syntax pre-terraform 0.12 (?)
 
 ```
 provider "aws" {
@@ -60,7 +64,7 @@ provider "aws" {
 ```
 
 
-### Managing values for module vars
+### Managing values for module vars (0.12+)
 (Ref: https://www.terraform.io/docs/configuration/variables.html)
 
 
