@@ -80,13 +80,22 @@ TBD
 
 #### variable definition files (.tfvars)
 
-variable files automatically loaded by TF:
-*terraform.tfvars*
-*terraform.tfvars.json* 
-files with names ending in *.auto.tfvars* or *.auto.tfvars.json.*
+`terraform apply -var-file="testing.tfvars"`
+
+variable files automatically loaded by TF (by order of priority):
+
+- files with names ending in *.auto.tfvars* or *.auto.tfvars.json.* (processed in lexical order)
+- *terraform.tfvars.json* 
+- *terraform.tfvars*
 
 #### use TF Environment variables
 TF_VAR_ + name of the declared variable
 
 `export TF_VAR_aws_access_key="xxxxxxxxxxxx"`
 
+
+#### CLI input
+
+
+#### default values
+use default key in variable declaration
