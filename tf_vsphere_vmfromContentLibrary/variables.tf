@@ -27,3 +27,14 @@ variable avi_controller_disk {
 variable avi_controller_image {}
 variable avi_controller_name {}
 variable avi_controller_vm_template {}
+
+variable avi_username {
+    default = "admin"
+}
+
+variable avi_initial_password {}
+variable avi_new_password {}
+
+variable avi_version {}
+
+variable avi_backup_passphrase {}

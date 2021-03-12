@@ -9,6 +9,10 @@ terraform {
       source = "hashicorp/vsphere"
       version = "= 1.24.3"
     }
+    avi = {
+      source = "vmware/avi"
+      version = "20.1.4"
+    }
   }
 }
 
@@ -97,3 +101,73 @@ resource "vsphere_virtual_machine" "avicontroller-vm" {
   #     "default-gw"  = 
   #  }
  }
+
+
+provider "avi" {
+  avi_username   = var.avi_username
+  avi_password   = var.avi_new_password
+  avi_controller = vsphere_virtual_machine.avicontroller-vm.default_ip_address
+  avi_tenant     = "admin"
+  avi_version    = var.avi_version
+}
+
+provider "avi" {
+  alias = "temp"
+  avi_username   = var.avi_username
+  avi_password   = var.avi_initial_password
+  avi_controller = vsphere_virtual_machine.avicontroller-vm.default_ip_address
+  avi_tenant     = "admin"
+  avi_version    = var.avi_version
+}
+
+resource "avi_useraccount" "avi_user" {
+  provider = avi.temp
+  username     = var.avi_username
+  old_password = var.avi_initial_password
+  password     = var.avi_new_password
+}
+
+resource "avi_backupconfiguration" "avi_backup_config" {
+  depends_on = [
+    avi_useraccount.avi_user,
+  ]
+  provider = avi  # should not be needed - default 
+  name = "Backup-Configuration"
+  save_local = true
+  backup_passphrase = var.avi_backup_passphrase
+}
+
+resource "avi_systemconfiguration" "avi_system_config" {
+  depends_on = [
+    avi_useraccount.avi_user,
+  ]
+  provider = avi # should not be needed - default
+  dns_configuration {
+    search_domain = ""
+    server_list {
+        type = "V4"
+        addr = "10.206.8.130"
+    }
+  }
+  # ntp_configuration {  #DOES NOT WORK
+  #  ntp_server_list {
+  #    type = "DNS"
+  #    addr = "10.170.16.48"
+  #  }
+  # }
+  
+  welcome_workflow_complete = true
+}
+
+
+##NEED TO ADD LOGIC FOR SLEEP
+#
+
+#terraform {
+#  required_providers {
+#    time = {
+#      source = "hashicorp/time"
+#      version = "0.7.0"
+#    }
+#  }
+#}
